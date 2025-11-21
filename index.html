@@ -207,6 +207,14 @@
                 <h2 class="title is-5">Results</h2>
                 <div class="content has-text-justified">
                     <h4 class="title is-6" style="text-align: left; margin-top: 2rem;">Comprehensive Performance Comparison</h4>
+                    
+                    <p class="is-size-7">
+                      Performance of different methods on mesh classification and mesh segmentation tasks. Mesh classification is evaluated on the 30-class SHREC11 dataset evaluated on splits of 10 samples per class (split-10) and the Cube Engraving dataset. HodgeFormer achieves results comparable to the state-of-the-art without spectral features, eigenvalue decomposition operations or complex complementary structures. We report their base architecture, the mesh elements they operate on (v: vertices, e: edges, f: faces) and whether they depend on eigen-decomposition methods. The abbreviation "trns" denotes the transformer architecture. 
+                        </p>
+
+
+                        
+                    
                     <div style="overflow-x: auto;">
                         <table>
                             <thead>
@@ -371,11 +379,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p style="font-size: 0.9em; margin-top: 1rem; color: #666;">
-                      Performance of different methods on mesh classification and mesh segmentation tasks. Mesh classification is evaluated on the 30-class SHREC11 dataset evaluated on splits of 10 samples per class (split-10) and the Cube Engraving dataset. HodgeFormer achieves results comparable to the state-of-the-art without spectral features, eigenvalue decomposition operations or complex complementary structures. We report their base architecture, the mesh elements they operate on (v: vertices, e: edges, f: faces) and whether they depend on eigen-decomposition methods. The abbreviation "trns" denotes the transformer architecture. 
-                       <!-- Notes: The EMNN (MC+H) and EGNN (MC+H) results shown in the table are as reported by <a href="#ref-trang20243">Trang et al. 2024</a>
-                       † clarifies that while EGNN and EMNN <a href="#ref-trang20243">[11]</a> theoretically do not need pre-calculated Heat Kernel Signatures (HKS), the authors report precomputation of HKS values for both the SHREC and Human Segmentation benchmark datasets -->
-                    </p>
+                    
                 
                    
                     <h3 class="title is-6" style="text-align: left; margin-top: 2rem; margin-bottom: 1rem;">Qualitative Results</h3>
