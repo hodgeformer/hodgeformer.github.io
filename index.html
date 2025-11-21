@@ -155,7 +155,7 @@
       <div class="column">
         <h2 class="title is-5">Abstract</h2>
         <div class="content has-text-justified">
-          <p>
+          <p class="is-size-7">
             Currently, prominent Transformer architectures applied on graphs and meshes for shape analysis tasks employ traditional attention layers that heavily utilize spectral features requiring costly eigenvalue decomposition-based methods. To encode the mesh structure, these methods derive positional embeddings, that heavily rely on eigenvalue decomposition based operations, e.g. on the Laplacian matrix, or on heat-kernel signatures, which are then concatenated to the input features. This paper proposes a novel approach inspired by the explicit construction of the Hodge Laplacian operator in Discrete Exterior Calculus as a product of discrete Hodge operators and exterior derivatives, i.e. \((L:=\star_{0}^{-1} d_{0}^{T} \star_{1} d_{0})\). We adjust the Transformer architecture in a novel deep learning layer that utilizes the multi-head attention mechanism to approximate Hodge matrices \(\star_{0}\), \(\star_{1}\) and \(\star_{2}\) and learn families of discrete operators \(L\) that act on mesh vertices, edges and faces. Our approach results in a computationally-efficient architecture that achieves comparable performance in mesh segmentation and classification tasks, through a direct learning framework, while eliminating the need for costly eigenvalue decomposition operations or complex preprocessing operations.
           </p>
         </div>
@@ -168,7 +168,7 @@
       <div class="column">
         <h2 class="title is-5">Problem Statement</h2>
         <div class="content has-text-justified">
-            <p>
+          <p class="is-size-7">
                 Existing methods for 3D mesh analysis using spectral features rely on costly eigendecomposition of Laplacian matrices, creating a computational bottleneck and exhibiting high complexity. Alternatives convolutional based methods are often constrained by architectural limitations: some require specific mesh connectivity to construct their operators or use fixed operators that cannot adapt to the underlying data. On the other hand, modern Transformer-based approaches like MeT <a href="#ref-vecchio2023met">[9]</a> still depend on pre-computed spectral features for positional encoding. This reliance on expensive, rigid, and often complex preprocessing steps limits the efficiency, scalability, and flexibility of deep learning on meshes.
             </p>
         </div>
@@ -182,13 +182,13 @@
         <h2 class="title is-5">Core Contribution</h2>
        
         <div class="content has-text-justified">
-<p>The foundational work of HodgeNet by Smirnov and Solomon <a href="#ref-smirnov2021hodgenet">[4]</a> demonstrated the effectiveness of applying Laplacian operators from Discrete Exterior Calculus (DEC) to triangular 3D meshes. In their approach, input features are used to learn diagonal Hodge Star operators, which then construct Laplacian operators applied to the features in a spectral learning framework.</p>
+          <p class="is-size-7">The foundational work of HodgeNet by Smirnov and Solomon <a href="#ref-smirnov2021hodgenet">[4]</a> demonstrated the effectiveness of applying Laplacian operators from Discrete Exterior Calculus (DEC) to triangular 3D meshes. In their approach, input features are used to learn diagonal Hodge Star operators, which then construct Laplacian operators applied to the features in a spectral learning framework.</p>
 
-<p>Most common constructions of discrete Hodge Star operators are limited to diagonal matrices, representing only some specific Hodge operator realizations. The Galerkin method, widely used in Finite Element Methods (FEM) literature <a href="#ref-suli2000hp">[16]</a>, prescribes systematic ways to discretize various differential operators, including the Hodge operator. The key idea is to project onto carefully designed basis functions (e.g., piecewise linear or higher order elements) and account for the overlap of these basis functions. These overlaps are used to design the mass matrix, which acts as a discrete Hodge operator. Unlike the diagonal Hodge operator, which considers only self-contributions, the Galerkin Hodge operator <a href="#ref-auchmann2006geometrically">[17]</a>, <a href="#ref-mohamed2016comparison">[18]</a>, <a href="#ref-lim2020hodge">[19]</a> incorporates contributions from neighboring elements, resulting in a sparse, non-diagonal matrix.</p>
+<p class="is-size-7">Most common constructions of discrete Hodge Star operators are limited to diagonal matrices, representing only some specific Hodge operator realizations. The Galerkin method, widely used in Finite Element Methods (FEM) literature, prescribes systematic ways to discretize various differential operators, including the Hodge operator. The key idea is to project onto carefully designed basis functions (e.g., piecewise linear or higher order elements) and account for the overlap of these basis functions. These overlaps are used to design the mass matrix, which acts as a discrete Hodge operator. Unlike the diagonal Hodge operator, which considers only self-contributions, the Galerkin Hodge operator <a href="#ref-auchmann2006geometrically">[17]</a>, <a href="#ref-mohamed2016comparison">[18]</a>, <a href="#ref-lim2020hodge">[19]</a> incorporates contributions from neighboring elements, resulting in a sparse, non-diagonal matrix.</p>
 
-<p>The projection with matrices \(W_Q\), \(W_K\), \(W_V\) onto a learned space corresponds to a basis projection as in the Galerkin method, and the self-attention mechanism \(Q \cdot K^T\) encodes pairwise interactions and accounts for overlaps of the basis functions. If the self-attention mechanism is localized, then it aligns with Galerkin-style discretizations <a href="#ref-cao2021choose">[20]</a>.</p>
+<p class="is-size-7">The projection with matrices \(W_Q\), \(W_K\), \(W_V\) onto a learned space corresponds to a basis projection as in the Galerkin method, and the self-attention mechanism \(Q \cdot K^T\) encodes pairwise interactions and accounts for overlaps of the basis functions. If the self-attention mechanism is localized, then it aligns with Galerkin-style discretizations <a href="#ref-cao2021choose">[20]</a>.</p>
 
-<p>This paper introduces a novel Transformer architecture that leverages the explicit construction of Laplacian operators from Discrete Exterior Calculus (DEC) on triangular 3D meshes, drawing connections between discrete Hodge Star operators and Transformer-style attention mechanisms through Galerkin-inspired discretizations. The proposed architecture includes a novel Transformer-inspired layer that enables information propagation directly on the manifold through attention-based learnable Hodge Star matrices and incidence matrices, which serve as discrete exterior derivatives. By incorporating the structure considerations into the architecture, we do not rely at all on eigen-decomposition based methods, spectral features, or preprocessing steps, while achieving competitive performance compared to state-of-the-art approaches on meshes.</p>
+<p class="is-size-7">This paper introduces a novel Transformer architecture that leverages the explicit construction of Laplacian operators from Discrete Exterior Calculus (DEC) on triangular 3D meshes, drawing connections between discrete Hodge Star operators and Transformer-style attention mechanisms through Galerkin-inspired discretizations. The proposed architecture includes a novel Transformer-inspired layer that enables information propagation directly on the manifold through attention-based learnable Hodge Star matrices and incidence matrices, which serve as discrete exterior derivatives. By incorporating the structure considerations into the architecture, we do not rely at all on eigen-decomposition based methods, spectral features, or preprocessing steps, while achieving competitive performance compared to state-of-the-art approaches on meshes.</p>
         </div>
 
 
@@ -499,7 +499,7 @@
           <em>Computer Graphics Forum</em>, 42(5):177–188, 2023.
         </li>
         
-        <li id="ref-satorras2021n">
+        <!-- <li id="ref-satorras2021n">
           Victor Garcia Satorras, Emiel Hoogeboom, and Max Welling.
           <strong>E(n) Equivariant Graph Neural Networks.</strong>
           <em>International Conference on Machine Learning</em>, pages 9323–9332, 2021.
@@ -563,7 +563,7 @@
           Yue Cao, Zhenda Xie, Bin Xiao, Jianmin Wang, Han Hu, Yichen Wei, and Zheng Zhang.
           <strong>How to choose your look: Attention mechanisms for human pose estimation.</strong>
           <em>arXiv preprint arXiv:2103.02166</em>, 2021.
-        </li>
+        </li> -->
       </ol>
     </div>
   </div>
