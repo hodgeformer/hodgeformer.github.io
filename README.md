@@ -213,12 +213,7 @@ where $A_{H_l}$ is the Multi-head Hodge Attention and $G_l$ is the FFN.
 
 
 
-#### 9. Layer Normalization
 
-**Pre-LN variant** is used, where LayerNorm is applied **before** each attention and FFN block:
-
-$$ x = x + \text{Attention}(\text{LayerNorm}(x)) $$ 
-$$ x = x + \text{FFN}(\text{LayerNorm}(x)) $$
 
 
 
