@@ -83,7 +83,7 @@
         <div class="column has-text-centered">
           <h1 class="title is-4 publication-title">HodgeFormer: Transformers for Learnable Operators on Triangular Meshes through Data-Driven Hodge Matrices</h1>
           <!-- <h2 class="title is-6 publication-subtitle">WACV2026</h2> -->
-          <div class="is-size-5 publication-authors">
+          <div class="is-size-5 publication-authors" style="margin-bottom: 1rem;">
             <span class="author-block">
                 Akis Nousias<sup>1</sup>,
             </span>
@@ -94,6 +94,8 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>K3Y Labs,</span>
+          </div>
+          <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>2</sup>Technical University of Munich</span>
           </div>
 
@@ -155,7 +157,7 @@
       <div class="column">
         <h2 class="title is-5">Abstract</h2>
         <div class="content has-text-justified">
-          <p class="is-size-7">
+          <p class="is-size-6">
             Currently, prominent Transformer architectures applied on graphs and meshes for shape analysis tasks employ traditional attention layers that heavily utilize spectral features requiring costly eigenvalue decomposition-based methods. To encode the mesh structure, these methods derive positional embeddings, that heavily rely on eigenvalue decomposition based operations, e.g. on the Laplacian matrix, or on heat-kernel signatures, which are then concatenated to the input features. This paper proposes a novel approach inspired by the explicit construction of the Hodge Laplacian operator in Discrete Exterior Calculus as a product of discrete Hodge operators and exterior derivatives, i.e. \((L:=\star_{0}^{-1} d_{0}^{T} \star_{1} d_{0})\). We adjust the Transformer architecture in a novel deep learning layer that utilizes the multi-head attention mechanism to approximate Hodge matrices \(\star_{0}\), \(\star_{1}\) and \(\star_{2}\) and learn families of discrete operators \(L\) that act on mesh vertices, edges and faces. Our approach results in a computationally-efficient architecture that achieves comparable performance in mesh segmentation and classification tasks, through a direct learning framework, while eliminating the need for costly eigenvalue decomposition operations or complex preprocessing operations.
           </p>
         </div>
@@ -168,7 +170,7 @@
       <div class="column">
         <h2 class="title is-5">Problem Statement</h2>
         <div class="content has-text-justified">
-          <p class="is-size-7">
+          <p class="is-size-6">
                 Existing methods for 3D mesh analysis using spectral features rely on costly eigendecomposition of Laplacian matrices, creating a computational bottleneck and exhibiting high complexity. Alternatives convolutional based methods are often constrained by architectural limitations: some require specific mesh connectivity to construct their operators or use fixed operators that cannot adapt to the underlying data. On the other hand, modern Transformer-based approaches like MeT <a href="#ref-vecchio2023met">[9]</a> still depend on pre-computed spectral features for positional encoding. This reliance on expensive, rigid, and often complex preprocessing steps limits the efficiency, scalability, and flexibility of deep learning on meshes.
             </p>
         </div>
@@ -182,13 +184,13 @@
         <h2 class="title is-5">Core Contribution</h2>
        
         <div class="content has-text-justified">
-          <p class="is-size-7">The foundational work of HodgeNet by Smirnov and Solomon <a href="#ref-smirnov2021hodgenet">[4]</a> demonstrated the effectiveness of applying Laplacian operators from Discrete Exterior Calculus (DEC) to triangular 3D meshes. In their approach, input features are used to learn diagonal Hodge Star operators, which then construct Laplacian operators applied to the features in a spectral learning framework.</p>
+          <p class="is-size-6">The foundational work of HodgeNet by Smirnov and Solomon <a href="#ref-smirnov2021hodgenet">[4]</a> demonstrated the effectiveness of applying Laplacian operators from Discrete Exterior Calculus (DEC) to triangular 3D meshes. In their approach, input features are used to learn diagonal Hodge Star operators, which then construct Laplacian operators applied to the features in a spectral learning framework.</p>
 
-<p class="is-size-7">Most common constructions of discrete Hodge Star operators are limited to diagonal matrices, representing only some specific Hodge operator realizations. The Galerkin method, widely used in Finite Element Methods (FEM) literature, prescribes systematic ways to discretize various differential operators, including the Hodge operator. The key idea is to project onto carefully designed basis functions (e.g., piecewise linear or higher order elements) and account for the overlap of these basis functions. These overlaps are used to design the mass matrix, which acts as a discrete Hodge operator. Unlike the diagonal Hodge operator, which considers only self-contributions, the Galerkin Hodge operator incorporates contributions from neighboring elements, resulting in a sparse, non-diagonal matrix.</p>
+<p class="is-size-6">Most common constructions of discrete Hodge Star operators are limited to diagonal matrices, representing only some specific Hodge operator realizations. The Galerkin method, widely used in Finite Element Methods (FEM) literature, prescribes systematic ways to discretize various differential operators, including the Hodge operator. The key idea is to project onto carefully designed basis functions (e.g., piecewise linear or higher order elements) and account for the overlap of these basis functions. These overlaps are used to design the mass matrix, which acts as a discrete Hodge operator. Unlike the diagonal Hodge operator, which considers only self-contributions, the Galerkin Hodge operator incorporates contributions from neighboring elements, resulting in a sparse, non-diagonal matrix.</p>
 
-<p class="is-size-7">The projection with matrices \(W_Q\), \(W_K\), \(W_V\) onto a learned space corresponds to a basis projection as in the Galerkin method, and the self-attention mechanism \(Q \cdot K^T\) encodes pairwise interactions and accounts for overlaps of the basis functions. If the self-attention mechanism is localized, then it aligns with Galerkin-style discretizations <a href="#ref-cao2021choose">[20]</a>.</p>
+<p class="is-size-6">The projection with matrices \(W_Q\), \(W_K\), \(W_V\) onto a learned space corresponds to a basis projection as in the Galerkin method, and the self-attention mechanism \(Q \cdot K^T\) encodes pairwise interactions and accounts for overlaps of the basis functions. If the self-attention mechanism is localized, then it aligns with Galerkin-style discretizations <a href="#ref-cao2021choose">[20]</a>.</p>
 
-<p class="is-size-7">This paper introduces a novel Transformer architecture that leverages the explicit construction of Laplacian operators from Discrete Exterior Calculus (DEC) on triangular 3D meshes, drawing connections between discrete Hodge Star operators and Transformer-style attention mechanisms through Galerkin-inspired discretizations. The proposed architecture includes a novel Transformer-inspired layer that enables information propagation directly on the manifold through attention-based learnable Hodge Star matrices and incidence matrices, which serve as discrete exterior derivatives. By incorporating the structure considerations into the architecture, we do not rely at all on eigen-decomposition based methods, spectral features, or preprocessing steps, while achieving competitive performance compared to state-of-the-art approaches on meshes.</p>
+<p class="is-size-6">This paper introduces a novel Transformer architecture that leverages the explicit construction of Laplacian operators from Discrete Exterior Calculus (DEC) on triangular 3D meshes, drawing connections between discrete Hodge Star operators and Transformer-style attention mechanisms through Galerkin-inspired discretizations. The proposed architecture includes a novel Transformer-inspired layer that enables information propagation directly on the manifold through attention-based learnable Hodge Star matrices and incidence matrices, which serve as discrete exterior derivatives. By incorporating the structure considerations into the architecture, we do not rely at all on eigen-decomposition based methods, spectral features, or preprocessing steps, while achieving competitive performance compared to state-of-the-art approaches on meshes.</p>
         </div>
 
 
@@ -210,7 +212,7 @@
                 <div class="content has-text-justified">
                     <h4 class="title is-6" style="text-align: left; margin-top: 2rem;">Performance</h4>
                     
-                    <p class="is-size-7">
+                    <p class="is-size-6">
                       Performance of different methods on mesh classification and mesh segmentation tasks. Mesh classification is evaluated on the 30-class SHREC11 dataset evaluated on splits of 10 samples per class (split-10) and the Cube Engraving dataset. HodgeFormer achieves results comparable to the state-of-the-art without spectral features, eigenvalue decomposition operations or complex complementary structures. We report their base architecture, the mesh elements they operate on (v: vertices, e: edges, f: faces) and whether they depend on eigen-decomposition methods. The abbreviation "trns" denotes the transformer architecture. 
                     </p>
 
@@ -388,21 +390,21 @@
                   <div style="overflow-x: auto;">
                 
                
-                            <img src="assets/images/hodgeformer-human_simplified-run-ljw7kqbr-200_results.png" alt="hodgeformer-human_simplified-run-ljw7kqbr-200_results" style="width: 50%; height: auto; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto;">
+                            <img src="assets/images/hodgeformer-human_simplified-run-ljw7kqbr-200_results.png" alt="hodgeformer-human_simplified-run-ljw7kqbr-200_results" style="width: 90%; height: auto; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto;">
                          
                   </div>
              
                 
                     <h3 class="title is-6" style="text-align: left; margin-top: 2rem;">Robustness to Perturbations</h3>
-                    <p class="is-size-7">
+                    <p class="is-size-6">
                         HodgeFormer demonstrates strong robustness to common mesh corruptions, showing minimal performance degradation when subjected to various types of noise and simplification.
                     </p>
-                    <p class="is-size-7">Performance degradation on Human dataset:</p>
+                    <p class="is-size-6">Performance degradation on Human dataset:</p>
                     <ul>
-                        <li class="is-size-7">Gaussian noise (\(\lambda=0.01\)): -3.0%</li>
-                        <li class="is-size-7">Face removal (20%): -8.7%</li>
-                        <li class="is-size-7">QEM remeshing (1000 faces): -3.1%</li>
-                        <li class="is-size-7">Patch removal: -3.5%</li>
+                        <li class="is-size-6">Gaussian noise (\(\lambda=0.01\)): -3.0%</li>
+                        <li class="is-size-6">Face removal (20%): -8.7%</li>
+                        <li class="is-size-6">QEM remeshing (1000 faces): -3.1%</li>
+                        <li class="is-size-6">Patch removal: -3.5%</li>
                     </ul>
                 </div>
 
@@ -413,7 +415,7 @@
                  
                   <h3 class="title is-6" style="text-align: left; margin-top: 2rem; margin-bottom: 1rem;">Robustness to missing parts</h3>
                   <div style="overflow-x: auto;">
-                    <img src="assets/images/hodgeformer-human_simplified-incomplete-model-results-two-meshes_horizontal.png" alt="hodgeformer-human_simplified-incomplete-model-results-two-meshes_horizontal" style="width: 50%; height: auto; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto;">
+                    <img src="assets/images/hodgeformer-human_simplified-incomplete-model-results-two-meshes_horizontal.png" alt="hodgeformer-human_simplified-incomplete-model-results-two-meshes_horizontal" style="width: 90%; height: auto; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto;">
                    
                   </div>
                 
@@ -421,7 +423,7 @@
                   <div style="overflow-x: auto;">
                    
                         
-                            <img src="assets/images/robustness_to_noise_and_topology_alterations.png" alt="robustness_to_noise_and_topology_alterations" style="width: 50%; height: auto; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto;">
+                            <img src="assets/images/robustness_to_noise_and_topology_alterations.png" alt="robustness_to_noise_and_topology_alterations" style="width: 90%; height: auto; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto;">
                   </div>
 
 
