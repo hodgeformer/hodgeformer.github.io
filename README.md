@@ -4,14 +4,14 @@
 
 ## Paper & Code availability 
 
-*Paper:* 
-<a href="https://arxiv.org/abs/2509.01839" target="_blank">https://arxiv.org/abs/2509.01839</a>
-
 *Project page:* 
 <a href="https://hodgeformer.github.io/" target="_blank">https://hodgeformer.github.io/</a>
 
+*Paper:* 
+<a href="https://arxiv.org/abs/2509.01839" target="_blank">https://arxiv.org/abs/2509.01839</a>
 
-*Code available in the following link:* 
+
+*Code:* 
 <a href="https://github.com/hodgeformer/hodgeformer" target="_blank">https://github.com/hodgeformer/hodgeformer</a>
 
 
