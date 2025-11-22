@@ -222,21 +222,6 @@ $$ x = x + \text{FFN}(\text{LayerNorm}(x)) $$
 
 
 
-#### 10. Complete Architecture Configuration
-
-**Layer composition**: 6 HodgeFormer layers followed by 2 vanilla Transformer layers (mixing ratio 6:2 or 2:1 depending on task).
-
-**Training hyperparameters**:
-
-- Optimizer: Adam
-- Learning rate: $5 \times 10^{-4}$ to $1 \times 10^{-3}$
-- Learning rate schedule: Cosine annealing
-- Batch size: 8 or 16
-- Epochs: 200 or 300
-- Dropout: applied in attention and FFN layers
-- Loss: Cross-entropy with label smoothing factor 0.2
-- Weight initialization: Standard PyTorch defaults
-
 
 
 
